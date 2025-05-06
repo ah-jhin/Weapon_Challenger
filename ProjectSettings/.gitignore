@@ -1,0 +1,42 @@
+
+# ========== Unity 기본 무시 항목 ==========
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+MemoryCaptures/
+UserSettings/
+Builds/
+ExportedObj/
+.consulo/
+
+# ========== Visual Studio 관련 ==========
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# ========== OS 별 무시 항목 ==========
+.DS_Store
+Thumbs.db
+
+# ========== Crashlytics (Firebase 사용 시) ==========
+crashlytics-build.properties
+
+# ========== Rider IDE (JetBrains) ==========
+.idea/
+*.sln.iml
+
+# ========== 기타 ==========
+*.apk
+*.aab
+*.log
+*.swp
