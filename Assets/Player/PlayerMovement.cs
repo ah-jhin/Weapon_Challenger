@@ -2,120 +2,181 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-	[Header("이동 관련")]
-	public float moveSpeed = 5f;          // 좌우 이동 속도
+	[Header("이동 및 점프")]
+	public float moveSpeed = 5f;
+	public float jumpForce = 10f;
+	public float highJumpForce = 16f;
+	public float jumpTime = 0.3f;
+	public float jumpBufferTime = 0.15f;
+	public float fallMultiplier = 0.5f;
 
-	[Header("점프 관련")]
-	public float jumpPower = 3.5f;         // 점프할 때의 힘
-	public int maxJumpCount = 2;          // 최대 점프 횟수 (2단 점프)
-	public float jumpHoldTime = 0.2f;     // 점프 키를 길게 누를 때 점프 지속 시간
+	[Header("회피")]
+	public float dodgeForce = 14f;           // ← 여기 수치를 키우면 더 멀리 도약함 (기본 12~15 추천)
+	public float dodgeCooldown = 1.2f;       // 쿨타임
+	private float lastDodgeTime = -999f;     // 마지막 회피 시간
+	private bool isDodging = false;          // 회피 중 여부
 
-	private int currentJumpCount;         // 현재 남은 점프 횟수
-	private bool isJumping;               // 점프 버튼을 누르고 있는 중인지
-	private float jumpTimeCounter;        // 점프 키 홀드 시간 누적
+	[Header("상태")]
+	public bool isGrounded = false;
+	public bool isInWater = false;
 
-	private float moveInput;              // ← → 키 입력값
-	private Rigidbody2D rb;               // Rigidbody2D 캐시
-	private SpriteRenderer sr;            // SpriteRenderer 캐시
-	private bool isGrounded = false;
-	private bool isCrouching = false;
-	private bool isLookingUp = false;
-	private bool isLookingDownAir = false;
+	private bool isJumping = false;
+	private bool hasAirJumped = false;
+	private bool hasExtraJump = false;
+	private bool useHighJump = false;
+
+	private float moveInput;
+	private float jumpBufferCounter;
+	private float jumpTimeCounter;
+
+	private Rigidbody2D rb;
+	private SpriteRenderer sr;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		sr = GetComponent<SpriteRenderer>();
-		currentJumpCount = maxJumpCount;
-		// 앉기: ↓ 키를 누르고 있고, 바닥에 있을 때
-		if (Input.GetKey(KeyCode.DownArrow) && isGrounded)
-		{
-			isCrouching = true;
-		}
-		else
-		{
-			isCrouching = false;
-		}
-
-		// 위 보기: ↑ 키를 누르고 있을 때
-		isLookingUp = Input.GetKey(KeyCode.UpArrow);
-
-		// 공중에서 아래 보기
-		if (!isGrounded && Input.GetKey(KeyCode.DownArrow))
-		{
-			isLookingDownAir = true;
-		}
-		else
-		{
-			isLookingDownAir = false;
-		}
 	}
 
 	void Update()
 	{
-		// ← → 키 입력 (왼쪽 -1, 아무것도 없음 0, 오른쪽 1)
+		// ▶ 이동 입력
 		moveInput = Input.GetAxisRaw("Horizontal");
 
-		// Flip 처리: 왼쪽일 때 뒤집기
-		if (moveInput > 0)
-			sr.flipX = false; // 오른쪽 보기
-		else if (moveInput < 0)
-			sr.flipX = true;  // 왼쪽 보기
+		// ▶ Flip 처리 (좌우 방향)
+		if (moveInput > 0) sr.flipX = false;
+		else if (moveInput < 0) sr.flipX = true;
 
-		// 점프 시작 (X 키 기본 설정)
-		if (Input.GetKeyDown(KeyCode.X) && currentJumpCount > 0)
+		// ▶ 점프 입력 버퍼
+		if (Input.GetKeyDown(KeyCode.X))
+			jumpBufferCounter = jumpBufferTime;
+		else
+			jumpBufferCounter -= Time.deltaTime;
+
+		// ▶ 점프 조건 체크
+		if (jumpBufferCounter > 0)
 		{
-			isJumping = true;
-			jumpTimeCounter = jumpHoldTime;
-			rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-			currentJumpCount--; // 점프 횟수 감소
+			if (isGrounded || !hasAirJumped || hasExtraJump || isInWater)
+			{
+				float force = useHighJump ? highJumpForce : jumpForce;
+				rb.linearVelocity = new Vector2(rb.linearVelocity.x, force);
+				isJumping = true;
+				jumpTimeCounter = jumpTime;
+				jumpBufferCounter = 0;
+
+				if (!isGrounded && !isInWater)
+				{
+					if (hasExtraJump)
+					{
+						hasExtraJump = false;
+						useHighJump = false;
+					}
+					hasAirJumped = true;
+				}
+			}
 		}
 
-		// 점프 키 홀드 중: 일정 시간 동안만 유지
-		if (Input.GetKey(KeyCode.X) && isJumping)
+		// ▶ 점프 높이 조절
+		if (Input.GetKey(KeyCode.X) && isJumping && jumpTimeCounter > 0)
 		{
-			if (jumpTimeCounter > 0)
-			{
-				rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-				jumpTimeCounter -= Time.deltaTime;
-			}
-			else
-			{
-				isJumping = false;
-			}
+			rb.linearVelocity = new Vector2(rb.linearVelocity.x, useHighJump ? highJumpForce : jumpForce);
+			jumpTimeCounter -= Time.deltaTime;
 		}
 
-		// 점프 키 뗐을 때
 		if (Input.GetKeyUp(KeyCode.X))
 		{
 			isJumping = false;
+		}
+
+		// ▶ 회피 키 입력 (C 키 + 쿨타임 체크)
+		if (Input.GetKeyDown(KeyCode.C) && Time.time - lastDodgeTime >= dodgeCooldown)
+		{
+			PerformDodge();
 		}
 	}
 
 	void FixedUpdate()
 	{
-		// 좌우 이동
-		rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+		// ▶ 회피 중이 아닐 때만 이동 처리
+		if (!isDodging)
+		{
+			rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+		}
+
+		// ▶ 물 속 낙하 감속
+		if (isInWater && rb.linearVelocity.y < 0)
+		{
+			rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * fallMultiplier);
+		}
+	}
+
+	void PerformDodge()
+	{
+		// ▶ 방향 판단: 입력 중이면 그 방향, 없으면 바라보는 방향
+		float direction = moveInput != 0 ? Mathf.Sign(moveInput) : (sr.flipX ? -1 : 1);
+
+		// ▶ 회피 도약 실행
+		rb.linearVelocity = new Vector2(direction * dodgeForce, rb.linearVelocity.y);
+		lastDodgeTime = Time.time;
+
+		isDodging = true;
+		Invoke(nameof(EndDodge), 0.1f); // 0.1초 후 회피 종료
+	}
+
+	void EndDodge()
+	{
+		isDodging = false;
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		// 바닥에 닿았을 때 점프 횟수 초기화
-		if (collision.contacts[0].normal.y > 0.7f) // 바닥에서 닿은 경우
+		if (collision.contacts[0].normal.y > 0.7f)
 		{
-			currentJumpCount = maxJumpCount;
-			isGrounded = true;  // 바닥과 닿았을 때
+			isGrounded = true;
+			hasAirJumped = false;
+			isJumping = false;
 		}
 	}
-	void OnCollisionExit2D(Collision2D collision)
+
+	private void OnCollisionExit2D(Collision2D collision)
 	{
 		isGrounded = false;
 	}
-	void OnGUI()
+
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		GUI.Label(new Rect(10, 10, 300, 20), "isCrouching: " + isCrouching);
-		GUI.Label(new Rect(10, 30, 300, 20), "isLookingUp: " + isLookingUp);
-		GUI.Label(new Rect(10, 50, 300, 20), "isLookingDownAir: " + isLookingDownAir);
+		if (other.CompareTag("Water"))
+		{
+			isInWater = true;
+		}
+
+		if (other.CompareTag("BlueJumpOrb"))
+		{
+			hasExtraJump = true;
+			useHighJump = false;
+			other.gameObject.SetActive(false);
+			Invoke(nameof(ReactivateOrb), 3f);
+		}
+
+		if (other.CompareTag("RedJumpOrb"))
+		{
+			hasExtraJump = true;
+			useHighJump = true;
+			other.gameObject.SetActive(false);
+			Invoke(nameof(ReactivateOrb), 3f);
+		}
 	}
 
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.CompareTag("Water"))
+		{
+			isInWater = false;
+		}
+	}
+
+	void ReactivateOrb()
+	{
+		// 나중에 OrbManager로 변경 가능
+	}
 }
