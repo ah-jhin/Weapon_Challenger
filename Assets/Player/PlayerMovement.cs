@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
+
 {
+
 	[Header("이동 및 점프")]
 	public float moveSpeed = 5f;
 	public float jumpForce = 10f;
@@ -28,9 +30,11 @@ public class PlayerMovement : MonoBehaviour
 	private float moveInput;
 	private float jumpBufferCounter;
 	private float jumpTimeCounter;
+	public Transform firePoint;
 
-	private Rigidbody2D rb;
-	private SpriteRenderer sr;
+	public Rigidbody2D rb;
+	public SpriteRenderer sr;
+
 
 	void Start()
 	{
@@ -93,7 +97,21 @@ public class PlayerMovement : MonoBehaviour
 		{
 			PerformDodge();
 		}
+		// FirePoint 위치 반전
+		if (firePoint != null)
+		{
+			float offsetX = 0.3f;  // 총구가 몸 기준 얼마나 떨어져 있는지 (오른쪽)
+			if (sr.flipX)
+			{
+				firePoint.localPosition = new Vector3(-offsetX, firePoint.localPosition.y, 0f);
+			}
+			else
+			{
+				firePoint.localPosition = new Vector3(+offsetX, firePoint.localPosition.y, 0f);
+			}
+		}
 	}
+
 
 	void FixedUpdate()
 	{

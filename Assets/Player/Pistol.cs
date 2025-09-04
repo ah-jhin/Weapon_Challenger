@@ -1,19 +1,20 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class Pistol : MonoBehaviour
 {
-	[Header("총알 프리팹과 총구 위치")]
-	public GameObject bulletPrefab; // Inspector에서 연결
-	public Transform firePoint;     // 총알 생성 위치 (FirePoint)
-
-	[Header("발사 설정")]
-	public float bulletSpeed = 12f;
-	public float fireDelay = 0.15f;     // 발사 간격
-	public int burstCount = 4;          // 4점사
-	public float spreadAngle = 5f;      // 탄퍼짐 각도 (±도)
+	public GameObject bulletPrefab;
+	public Transform firePoint;
+	public float burstDelay = 0.15f;
+	public int burstCount = 4;
 
 	private bool isFiring = false;
+	private SpriteRenderer sr;   // <-- 이거 추가
+
+	void Start()
+	{
+		sr = GetComponent<SpriteRenderer>();   // <-- 이것도 추가
+	}
 
 	void Update()
 	{
@@ -30,7 +31,7 @@ public class Pistol : MonoBehaviour
 		for (int i = 0; i < burstCount; i++)
 		{
 			FireOneBullet();
-			yield return new WaitForSeconds(fireDelay);
+			yield return new WaitForSeconds(burstDelay);
 		}
 
 		isFiring = false;
@@ -38,16 +39,24 @@ public class Pistol : MonoBehaviour
 
 	void FireOneBullet()
 	{
-		// 탄퍼짐 각도 적용
-		float spread = Random.Range(-spreadAngle, spreadAngle);
-		Quaternion rotation = Quaternion.Euler(0, 0, transform.localScale.x > 0 ? spread : -spread);
+		GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+		bulletObj.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
 
-		// 총알 생성
-		GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation * rotation);
-		Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+		bool isFlipped = sr.flipX;
+		int dir = isFlipped ? -1 : 1;
 
-		// 총알 속도 적용 (좌/우 방향 자동 적용)
-		Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-		rb.linearVelocity = direction * bulletSpeed;
+		Rigidbody2D rb = bulletObj.GetComponent<Rigidbody2D>();
+		rb.linearVelocity = new Vector2(dir * 15f, 0f);
+	}
+
+	void LateUpdate()
+	{
+		// FirePoint 위치를 총구 위치 좌/우로 수정
+		if (firePoint != null)
+		{
+			float offset = 0.35f;
+			float yPos = firePoint.localPosition.y;
+			firePoint.localPosition = new Vector3(sr.flipX ? -offset : offset, yPos, 0f);
+		}
 	}
 }
