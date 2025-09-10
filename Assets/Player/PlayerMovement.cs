@@ -13,9 +13,9 @@ public class PlayerMovement : MonoBehaviour
 	public float fallMultiplier = 0.5f;
 
 	[Header("회피")]
-	public float dodgeForce = 14f;           // ← 여기 수치를 키우면 더 멀리 도약함 (기본 12~15 추천)
-	public float dodgeCooldown = 1.2f;       // 쿨타임
-	private float lastDodgeTime = -999f;     // 마지막 회피 시간
+	public float evadeForce = 14f;           // ← 여기 수치를 키우면 더 멀리 도약함 (기본 12~15 추천)
+	public float evadeCooldown = 1.2f;       // 쿨타임
+	private float lastevadeTime = -999f;     // 마지막 회피 시간
 	private bool isDodging = false;          // 회피 중 여부
 
 	[Header("상태")]
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public Rigidbody2D rb;
 	public SpriteRenderer sr;
-
+	public Evade evade;
 
 	void Start()
 	{
@@ -50,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
 		// ▶ Flip 처리 (좌우 방향)
 		if (moveInput > 0) sr.flipX = false;
 		else if (moveInput < 0) sr.flipX = true;
+
+		if (evade != null && evade.IsDodging) return;
 
 		// ▶ 점프 입력 버퍼
 		if (Input.GetKeyDown(KeyCode.X))
@@ -93,9 +95,9 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		// ▶ 회피 키 입력 (C 키 + 쿨타임 체크)
-		if (Input.GetKeyDown(KeyCode.C) && Time.time - lastDodgeTime >= dodgeCooldown)
+		if (Input.GetKeyDown(KeyCode.C) && Time.time - lastevadeTime >= evadeCooldown)
 		{
-			PerformDodge();
+			Performevade();
 		}
 		// FirePoint 위치 반전
 		if (firePoint != null)
@@ -128,20 +130,20 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	void PerformDodge()
+	void Performevade()
 	{
 		// ▶ 방향 판단: 입력 중이면 그 방향, 없으면 바라보는 방향
 		float direction = moveInput != 0 ? Mathf.Sign(moveInput) : (sr.flipX ? -1 : 1);
 
 		// ▶ 회피 도약 실행
-		rb.linearVelocity = new Vector2(direction * dodgeForce, rb.linearVelocity.y);
-		lastDodgeTime = Time.time;
+		rb.linearVelocity = new Vector2(direction * evadeForce, rb.linearVelocity.y);
+		lastevadeTime = Time.time;
 
 		isDodging = true;
-		Invoke(nameof(EndDodge), 0.1f); // 0.1초 후 회피 종료
+		Invoke(nameof(Endevade), 0.1f); // 0.1초 후 회피 종료
 	}
 
-	void EndDodge()
+	void Endevade()
 	{
 		isDodging = false;
 	}

@@ -7,8 +7,16 @@
       "RelativeMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|solutionrelative:assets\\player\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|f:\\unity\\weapon_challenger\\assets\\damagetext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|F:\\Unity\\Weapon_Challenger\\assets\\damagetext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|solutionrelative:assets\\damagetext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|f:\\unity\\weapon_challenger\\assets\\player\\evade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|solutionrelative:assets\\player\\evade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|F:\\Unity\\Weapon_Challenger\\assets\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|solutionrelative:assets\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|F:\\Unity\\Weapon_Challenger\\assets\\boss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|F:\\Unity\\Weapon_Challenger\\assets\\player\\pistol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|solutionrelative:assets\\player\\pistol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|F:\\Unity\\Weapon_Challenger\\assets\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F1824736-BA52-1FF1-B533-91398170CE58}|Assembly-CSharp.csproj|solutionrelative:assets\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Pistol.cs",
               "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\Pistol.cs",
               "RelativeDocumentMoniker": "Assets\\Player\\Pistol.cs",
@@ -51,15 +55,41 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\Bullet.cs",
+              "RelativeDocumentMoniker": "Assets\\Player\\Bullet.cs",
+              "ToolTip": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\Bullet.cs",
+              "RelativeToolTip": "Assets\\Player\\Bullet.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvw4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T16:24:02.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "DamageText.cs",
               "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Assets\\DamageText.cs",
               "RelativeDocumentMoniker": "Assets\\DamageText.cs",
               "ToolTip": "F:\\Unity\\Weapon_Challenger\\Assets\\DamageText.cs",
               "RelativeToolTip": "Assets\\DamageText.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-23T12:37:28.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Evade.cs",
+              "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\Evade.cs",
+              "RelativeDocumentMoniker": "Assets\\Player\\Evade.cs",
+              "ToolTip": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\Evade.cs",
+              "RelativeToolTip": "Assets\\Player\\Evade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T14:58:53.881Z",
               "EditorCaption": ""
             },
             {
@@ -68,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Boss.cs",
               "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Assets\\Boss.cs",
               "RelativeDocumentMoniker": "Assets\\Boss.cs",
@@ -80,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Sprite-Lit-Default.shader",
               "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Library\\PackageCache\\com.unity.render-pipelines.universal@43e3bf1c3037\\Shaders\\2D\\Sprite-Lit-Default.shader",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.render-pipelines.universal@43e3bf1c3037\\Shaders\\2D\\Sprite-Lit-Default.shader",
@@ -88,32 +118,19 @@
               "RelativeToolTip": "Library\\PackageCache\\com.unity.render-pipelines.universal@43e3bf1c3037\\Shaders\\2D\\Sprite-Lit-Default.shader",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvw4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002777|",
-              "WhenOpened": "2025-08-19T18:48:51.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-19T18:48:51.192Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Player\\PlayerMovement.cs",
               "ToolTip": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\PlayerMovement.cs",
               "RelativeToolTip": "Assets\\Player\\PlayerMovement.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAIwEgAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAYwDkAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-19T18:26:26.435Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Bullet.cs",
-              "DocumentMoniker": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\Bullet.cs",
-              "RelativeDocumentMoniker": "Assets\\Player\\Bullet.cs",
-              "ToolTip": "F:\\Unity\\Weapon_Challenger\\Assets\\Player\\Bullet.cs",
-              "RelativeToolTip": "Assets\\Player\\Bullet.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAvwDMAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-18T17:51:47.83Z",
+              "WhenOpened": "2025-08-19T18:26:26.435Z",
               "EditorCaption": ""
             }
           ]
