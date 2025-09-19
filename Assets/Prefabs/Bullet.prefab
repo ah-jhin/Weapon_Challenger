@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4962018778616207208}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,6 +55,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -76,6 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -98,7 +101,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6785224070344415373}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -175,7 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428c1e854208c5240977548e2c91d4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
   lifetime: 0.7
   minDamage: 1
   maxDamage: 3
-  damageTextPrefab: {fileID: 5648259266652348047, guid: 9d9a55007b44a67408b029865132c543, type: 3}
+  damageTextPrefab: {fileID: 1926280506753864649, guid: fff1268a762dacc40b0ffcf01c935208, type: 3}
+  canvasParent: {fileID: 0}
+  ownerCollider: {fileID: 0}

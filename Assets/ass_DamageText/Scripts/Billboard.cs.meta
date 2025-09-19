@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e8222a4966aaf2148b1a1f670a6b50fb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Scripts/Billboard.cs
+  uploadId: 627759

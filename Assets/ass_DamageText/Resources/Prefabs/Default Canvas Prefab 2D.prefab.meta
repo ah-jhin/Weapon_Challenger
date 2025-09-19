@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e124e19729a322b4281287dcc0eb622b
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Resources/Prefabs/Default Canvas Prefab
+    2D.prefab
+  uploadId: 627759

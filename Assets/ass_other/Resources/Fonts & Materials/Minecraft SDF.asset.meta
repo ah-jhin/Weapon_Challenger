@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0a611450aa46e474b9059adcf24cb845
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/TextMesh Pro/Resources/Fonts & Materials/Minecraft SDF.asset
+  uploadId: 627759

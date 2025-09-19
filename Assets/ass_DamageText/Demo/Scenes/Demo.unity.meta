@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 844a481e813fc464d9f83d1d0d3ddac7
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Demo/Scenes/Demo.unity
+  uploadId: 627759

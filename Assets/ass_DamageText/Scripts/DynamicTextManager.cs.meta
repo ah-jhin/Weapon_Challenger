@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cf7c18620c323414a849913f889acb05
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Scripts/DynamicTextManager.cs
+  uploadId: 627759

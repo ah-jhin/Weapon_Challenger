@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1749513161c8f7e4db31e46d13392ba2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Demo/Data/Default Data.asset
+  uploadId: 627759

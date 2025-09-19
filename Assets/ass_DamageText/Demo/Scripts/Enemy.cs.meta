@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: aa74affd4cc819f41b3f52e886b1b2b1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Demo/Scripts/Enemy.cs
+  uploadId: 627759

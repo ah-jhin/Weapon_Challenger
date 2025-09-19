@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: bf7bf8a9aa4c17b4894aee1118a363d5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Scripts/AlternationMode.cs
+  uploadId: 627759

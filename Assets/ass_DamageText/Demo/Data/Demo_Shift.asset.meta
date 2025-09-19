@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5dd75784033eea943a08ab7facd4f690
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 227063
+  packageName: Dynamic Floating Text
+  packageVersion: 1.0.2
+  assetPath: Assets/Dynamic Floating Text/Demo/Data/Demo_Shift.asset
+  uploadId: 627759
